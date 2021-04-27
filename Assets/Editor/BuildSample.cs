@@ -30,8 +30,8 @@ public class BuildSample
         AssetPackConfig assetPackConfig = new AssetPackConfig();
         List<string> assetBundlePaths = new List<string>();
 
-        string outputPath = EditorUtility.SaveFolderPanel("Build Sample AssetBandle","","");
-        if(!string.IsNullOrEmpty(outputPath))
+        string outputPath = "Build/Android/TempStagingAssetBundles";//EditorUtility.SaveFolderPanel("Build Sample AssetBandle","","");
+        if (!string.IsNullOrEmpty(outputPath))
         {
             var report = BuildPipeline.BuildPlayer(scenesToBuild, outputPath + "/scenes/add_scenes.unity3d", BuildTarget.Android, BuildOptions.BuildAdditionalStreamedScenes);
             foreach (var filepath in report.files)
