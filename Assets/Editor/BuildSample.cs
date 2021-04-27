@@ -34,9 +34,9 @@ public class BuildSample
         if(!string.IsNullOrEmpty(outputPath))
         {
             var report = BuildPipeline.BuildPlayer(scenesToBuild, outputPath + "/scenes/add_scenes.unity3d", BuildTarget.Android, BuildOptions.BuildAdditionalStreamedScenes);
-            foreach(var filepath in report.files)
+            foreach (var filepath in report.files)
             {
-                if(Path.GetExtension(filepath.path) == "unity3d")
+                if (Path.GetExtension(filepath.path) == "unity3d")
                 {
                     assetBundlePaths.Add(filepath.path);
                 }
@@ -58,12 +58,13 @@ public class BuildSample
         }
 
 
-        string bundlePath = "Build/Android/apptest.aab";
+        string bundlePath = "Build/Android/apptest";
         BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions();
         buildPlayerOptions.locationPathName = bundlePath;
         buildPlayerOptions.options = BuildOptions.None;
         buildPlayerOptions.scenes = EditorBuildSettings.scenes.Select(s => s.path).ToArray();
         buildPlayerOptions.target = BuildTarget.Android;
+        buildPlayerOptions.targetGroup = BuildTargetGroup.Android;
         Bundletool.BuildBundle(buildPlayerOptions, assetPackConfig);
     }
 
